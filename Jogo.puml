@@ -1,0 +1,41 @@
+@startuml
+!pragma layout smetana
+
+class Main {
++ {static} void main(String[])
+}
+
+class Jogo {
+- String id
+- String nome
+- double preco
+- String categoria
+- String gerarIdAleatorio()
++ String getId()
++ void setId(String)
++ String getNome()
++ void setNome(String)
++ double getPreco()
++ void setPreco(double)
++ String getCategoria()
++ void setCategoria(String)
++ String toString()
+}
+
+class GerenciadorDeJogo {
+- List<Jogo> listaDeJogos
++ void cadastrarJogo(Jogo)
++ boolean removerJogo(String)
++ void listarJogos()
+}
+
+
+GerenciadorDeJogo "1" o-- "0..*" Jogo : gerencia >
+
+
+Main ..> GerenciadorDeJogo : usa >
+
+
+Main ..> Jogo : instancia >
+
+@enduml
